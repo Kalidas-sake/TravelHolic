@@ -316,7 +316,7 @@
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-twitter" > &ensp; </i></a>
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-instagram" > &ensp; </i></a>
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-linkedin-in" > &ensp; </i></a>
-        <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
+        <a href="http:https://www.github.com/Kalidas-sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
     </div>
 
     <script>
