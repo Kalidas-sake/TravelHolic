@@ -1,0 +1,148 @@
+body{
+    font-family: 'PT Mono', monospace;
+    background: rgb(238,240,235);
+}
+
+
+
+
+.navbar {
+    background: black;
+    border: none;
+    border-radius: 0;
+}
+
+.black{
+    background: black;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.container{
+    
+}
+
+.aboutimg {
+	margin-left:   40px;
+	border: 1px solid black;
+	border-radius: 50%;
+	height: 120px;
+}
+
+#aboutme {
+	padding-bottom: 20px;
+}
+
+
+
+.postBtn {
+     /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    left: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    opacity: 0.2;
+}
+
+.postBtn:hover {
+    opacity: 1; /* Add a dark-grey background on hover */
+}
+
+
+.loadimg {
+      display: none;
+      margin: auto;
+      padding-top: 200px;
+      position:fixed;
+      width:100%;
+      top: 0;
+      right: 0;
+      height:100%;
+      background-color:rgba(255,255,255,0.9);
+      background-repeat:no-repeat;
+      background-position:center;
+      z-index:10000000;
+    }
+
+.loadimg img {
+  display: block;
+  margin: auto;
+}
+
+.heading {
+    margin: 15px;
+    padding-top: 5px;
+    padding-left: 40px;
+    background: white;
+}
+
+.heading p{
+    padding: 25px;
+}
+
+.btnAlbum{
+      margin-left: 80%;
+      margin-bottom: 20px;
+      text-align: center;
+      text-decoration: none;
+      font-family:'PT Sans',helvetica;
+      background: rgb(242,106,68);
+      display:inline-block;
+      font-size: 17px !important;
+      padding: 10px 10px 10px 10px;
+      color: #FFF;
+}
+
+.btnAlbum:hover{
+    text-decoration: none;
+    color: aqua;
+}
+
+.img1 img{
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.aboutcol {
+    margin-top: 40px;
+    padding-top: 5px;
+    padding-left: 40px;
+}
+
+
+.footer {
+    background: rgb(76,91,92);
+}
+
+.footer small{
+    color: white;
+}
+
+.footer h2{
+    font-weight: bolder;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+.footer i{
+    color: white;
+}
+
+.footer i:hover{
+    color: orangered;
+}
+
