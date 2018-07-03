@@ -6,12 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="popupstyle.css">
-    <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/scroll.js"></script>
+    <link rel="stylesheet" href="stylesheets/popupstyle.css">
+    <link rel="stylesheet" href="stylesheets/sliderStyle.css">
+
 
     <style>
         .load {
@@ -89,11 +88,6 @@
             120% {
                 background-image: url(img/slideshow/6.jpg);
             }
-        }
-
-
-        #noData {
-        
         }
 
     </style>
@@ -222,7 +216,7 @@
 
             <div class="col-sm-8">
 
-                <div class="col-sm-4" id="noData">
+                <div class="col-sm-4 heading" id="noData">
                     <h3>Sorry..! Nothing to show.</h3>
                 </div>
                 <?php
@@ -232,7 +226,7 @@
                 //define results per page
                 $results_per_page = 3;
 
-                //find out no of results stored in database
+                //find out number of results stored in database
                 $sql = "SELECT * FROM newsletters";
                 $result = mysqli_query($conn, $sql);
                 $number_of_results = mysqli_num_rows($result);
@@ -240,7 +234,7 @@
                 //determine no of total pages available
                 $number_of_pages = ceil($number_of_results/$results_per_page);
 
-                //determine which page no visitor is currently
+                //determine which page number visitor is currently
                 if(!isset($_GET['page'])){
                     $page = 1;
                 }
@@ -280,6 +274,7 @@
                 }
 
             //display the links to the page
+                if($number_of_results > 3){
                 ?>
                         <ul class="pagination">
                             <?php
@@ -294,6 +289,7 @@
             }
             ?>
                         </ul>
+                <?php } ?>
             </div>
         </div>
         <!-- Container division close -->
@@ -304,7 +300,7 @@
     <button class="postBtn" id="myBtn">Post</button>
 
     <div class="loadimg" id='loadingmessage'>
-        <img class="limg" src='img/inf.gif' />
+        <img class="limg" src='img/loading.gif' />
     </div>
 
 
@@ -319,132 +315,20 @@
         <a href="http:https://www.github.com/Kalidas-sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
     </div>
 
-    <script>
-        //for showing pagination
-        var c = <?php print($rec_count); ?> / 3;
-        var ul = document.getElementById("paging");
-        for (i = 0; i < c; i++) {
-            (function() {
-                $("#paging").html("<li><a href = '?page=" + i + "'>" + i + "</a></li>");
-            })();
+<script>
+//Handeling No Data in database message display
+    var dbData = <?php print($number_of_results); ?>;
+    if( dbData > 0 ){
+        document.getElementById("noData").style.display = "none";
+    }else{
+        document.getElementById("noData").style.display = "block";
+    }
+</script>
+    <script src="scripts/scroll.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/mainScript.js"></script>
 
-        }
-
-        //for making current pagination active
-        var pageNo = <?php print($_GET['page']); ?>;
-
-        //for showing nothing to show msg when database is empty
-        var records = <?php print($number_of_results); ?>;
-        //document.getElementById("noData").style.display = "block";
-        //errblock.style.display = 'block';
-        if (!records > 0) {
-            
-        }
-
-    </script>
-
-    <script>
-        window.onscroll = function() {
-            myFunction()
-        };
-
-        var header = document.getElementById("mynavbar");
-        var sticky = header.offsetTop;
-        var space = document.getElementById("main-container");
-
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("black");
-                space.style.marginTop = '80px';
-                //document.getElementById("main-container").style.margin-top = "60px";
-            } else {
-                header.classList.remove("black");
-                space.style.marginTop = '0px';
-            }
-        }
-
-    </script>
-
-    <script>
-        // Get the modal
-        var modal = document.getElementById('myModal');
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-            btn.style.display = "none";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-            btn.style.display = "block";
-            location.reload(true);
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                btn.style.display = "block";
-            }
-        }
-
-    </script>
-
-    <script>
-        $("#sub").click(function() {
-            var data = $("#myForm :input").serializeArray();
-
-            $.post($("#myForm").attr("action"), data, function(info) {
-                alert(info);
-                clearInput();
-                this.reload;
-            });
-        });
-
-        $("#myForm").submit(function() {
-            return false;
-        })
-
-        function clearInput() {
-            $("#myForm :input").each(function() {
-                $(this).val('');
-            });
-        }
-
-
-        function loadImageFunction() {
-            var loadimg1 = document.getElementById('previmg1').value;
-            var loadimg2 = document.getElementById('previmg2').value;
-            $("#prev1div").html("<img src='" + loadimg1 + "'  height ='136' width = '236' alt='Uploading....'/>");
-            $("#prev2div").html("<img src='" + loadimg2 + "'  height ='136' width = '236' alt='Uploading....'/>");
-        }
-
-    </script>
-
-    <script>
-        $("#btnEnter").click(function() {
-            var mylink = $("#form2 :input").serializeArray();
-            $('#loadingmessage').show();
-            $.post('parse.php', mylink, function(info) {
-                var array = info.split(",");
-                document.getElementById("titletext").value = array[3];
-                $('#loadingmessage').hide();
-            });
-        });
-
-        $("#form2").submit(function() {
-            return false;
-        });
-
-    </script>
 </body>
 
 </html>
