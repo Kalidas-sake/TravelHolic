@@ -3,7 +3,7 @@
 	
 
 	$link = $_POST['googleLink'];
-
+    //$link = 'https://photos.app.goo.gl/xCj45hzVu5chWpnn1';
 
 	$page = file_get_contents($link);
 
@@ -15,28 +15,19 @@
 
    
 
-	$data = $dom->getElementsByTagName('meta');
-	$t = '';
-	$u = '';
-	$i = '';
-	foreach ($data as $date) {
-		if ($date->getAttribute('property')==='og:title') {
-			$t = $date->getAttribute('content');
+	$imgLinks = $dom->getElementsByTagName('meta');
+	foreach ($imgLinks as $imgLink) {
+		if (preg_match("/lh3.googleusercontent.com/", $imgLink->getAttribute('content'))) {
+			$img = $imgLink->getAttribute('content');
 		
-		}
-		if ($date->getAttribute('property')==='og:url') {
-			$u = $date->getAttribute('content');
-			
-		}
-		if ($date->getAttribute('property')==='og:image') {
-			$i = $date->getAttribute('content');
-			
 		}
 	}
 
-	//$info = array('name' => $t, 'link' => $u, 'img' => $i );
-	//header("Content-Type: application/javascript");
-		
-	//print_r($info);
+    $titles = $dom->getElementsByTagName('title');
+	foreach ($titles as $title) {
+        $arr = explode("-" , $title->nodeValue , 2);
+        $myTitle = $arr[0];
+        //echo $myTitle;
+	}
 
-	echo "$t,$u,$i";
+echo $myTitle.','.$link .','.$img ;

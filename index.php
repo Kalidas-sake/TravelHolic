@@ -196,7 +196,7 @@
                     </form>
                     <div class="col-sm-8 text-center">
                         <form action="parse.php" method="post" id="form2">
-                            Paste Google Photos album link here <br/><input type="text" name="googleLink" id="lnk">
+                            Paste Google Photos shared album link here <br/><input type="text" name="googleLink" id="lnk">
                             <button id="btnEnter" class="btn btn-primary">ENTER</button><br/><br/>
                         </form>
                         <p>Preview Images</p>
@@ -216,7 +216,7 @@
 
             <div class="col-sm-8">
 
-                <div class="col-sm-4 heading" id="noData">
+                <div class="col-sm-4 " id="noData">
                     <h3>Sorry..! Nothing to show.</h3>
                 </div>
                 <?php
@@ -247,7 +247,7 @@
                 $this_page_first_result = ($page-1)*$results_per_page;
 
                 //retrive selected results from db and display
-                $sql = "SELECT * FROM newsletters LIMIT " .$this_page_first_result .',' . $results_per_page ;
+                $sql = "SELECT * FROM newsletters ORDER BY id DESC LIMIT " .$this_page_first_result .',' . $results_per_page ;
                 $result = mysqli_query($conn, $sql);
 
                 while($row = mysqli_fetch_array($result)){
@@ -260,8 +260,8 @@
                             <?php echo $row['location']." ". $row['date']; ?>
                         </h5>
                         <div class="img1">
-                            <img src='<?php echo $row[' img1 ']; ?>' width="300px" />
-                            <img src='<?php echo $row[' img2 ']; ?>' width="300px" /></br>
+                            <img src='<?php echo $row['img1']; ?>' width="300px" />
+                            <!--img src='<!--?php echo $row['img2']; ?>' width="300px" /--></br>
                         </div><br/>
                         <h4>About Trip..</h4>
                         <p style="text-align:justify">
@@ -312,7 +312,7 @@
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-twitter" > &ensp; </i></a>
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-instagram" > &ensp; </i></a>
         <a href="http://www.facebook.com/kalidas.sake" target="_blank"><i class="fab fa-2x fa-linkedin-in" > &ensp; </i></a>
-        <a href="http:https://www.github.com/Kalidas-sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
+        <a href="https://www.github.com/Kalidas-sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
     </div>
 
 <script>

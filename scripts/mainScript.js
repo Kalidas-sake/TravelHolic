@@ -33,9 +33,16 @@ $("#sub").click(function () {
     var data = $("#myForm :input").serializeArray();
 
     $.post($("#myForm").attr("action"), data, function (info) {
-        alert(info);
-        clearInput();
+        //alert(info);
+        //clearInput();
         //this.reload;
+        if ( info == '1') {
+            alert('Post created');
+        } else if ( info == '0') {
+            alert('Error in post creation');
+        } else {
+            alert(info);
+        }
     });
 });
 
@@ -63,7 +70,9 @@ $("#btnEnter").click(function () {
     $('#loadingmessage').show();
     $.post('parse.php', mylink, function (info) {
         var array = info.split(",");
-        document.getElementById("titletext").value = array[3];
+        document.getElementById("titletext").value = array[0];
+        document.getElementById("glink").value = array[1];
+        document.getElementById("previmg1").value = array[2];
         $('#loadingmessage').hide();
     });
 });
