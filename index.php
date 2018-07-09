@@ -5,6 +5,7 @@
     <title>Home | My TravelHolic Adventure</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -100,7 +101,7 @@
         <div class="content">
             <div class="principal">
                 <h1 class="mainTitle">My TravelHolic Adventure</h1>
-                <p class="quote">"Journeys end in lovers meeting." <small>-William Shakespeare</small></p>
+                <p class="quote">"Life is short and the world is wide"</p>
             </div>
         </div>
     </div>
@@ -260,8 +261,9 @@
                             <?php echo $row['location']." ". $row['date']; ?>
                         </h5>
                         <div class="img1">
-                            <img src='<?php echo $row['img1']; ?>' width="300px" />
-                            <!--img src='<!--?php echo $row['img2']; ?>' width="300px" /--></br>
+                            <img src='<?php echo $row[' img1 ']; ?>' width="300px" />
+                            <!--img src='<!--?php echo $row['img2']; ?>' width="300px" /-->
+                            </br>
                         </div><br/>
                         <h4>About Trip..</h4>
                         <p style="text-align:justify">
@@ -276,20 +278,36 @@
             //display the links to the page
                 if($number_of_results > 3){
                 ?>
-                        <ul class="pagination">
+                        <ul class="pagination nav">
                             <?php
         
             for($page=1; $page<=$number_of_pages; $page++){
-                ?>
+                if($number_of_pages == $page){
+                    ?>
                                 <li id="<?php print($page);?>">
                                     <a href="index.php?page=<?php print($page);?>">
-                                        <?php print($page); ?> </a>
+                                        Last </a>
                                 </li>
                                 <?php
+                }else if($page == 1){
+                            ?>
+                                    <li id="<?php print($page);?>">
+                                        <a href="index.php?page=<?php print($page);?>">
+                                            First </a>
+                                    </li>
+                                    <?php
+                }else{
+                 ?>
+                                        <li id="<?php print($page);?>">
+                                            <a href="index.php?page=<?php print($page);?>">
+                                                <?php print($page); ?> </a>
+                                        </li>
+                                        <?php   
+                }
             }
             ?>
                         </ul>
-                <?php } ?>
+                        <?php } ?>
             </div>
         </div>
         <!-- Container division close -->
@@ -315,15 +333,23 @@
         <a href="https://www.github.com/Kalidas-sake" target="_blank"><i class="fab fa-2x fa-github" > &ensp; </i></a>
     </div>
 
-<script>
-//Handeling No Data in database message display
-    var dbData = <?php print($number_of_results); ?>;
-    if( dbData > 0 ){
-        document.getElementById("noData").style.display = "none";
-    }else{
-        document.getElementById("noData").style.display = "block";
-    }
-</script>
+    <script>
+        //Handeling No Data in database message display
+        var dbData = <?php print($number_of_results); ?>;
+        if (dbData > 0) {
+            document.getElementById("noData").style.display = "none";
+        } else {
+            document.getElementById("noData").style.display = "block";
+        }
+
+        var pageId = <?php print($_GET['page']); ?>;
+        if (pageId == '') {
+            var liId = document.getElementById('1');
+        }
+        //alert(pageId);
+        liId.className += " active";
+
+    </script>
     <script src="scripts/scroll.js"></script>
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>

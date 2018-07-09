@@ -14,12 +14,4 @@ function myFunction() {
     header.classList.remove("black");
   }
 }
-//for showing nothing to show msg when database is empty
-        //var records = <?php print($number_of_results); ?>;
-        
-        //alert("test");
-        //errblock.style.display = 'block';
-        if (records > 0) {
-            //document.getElementById("noData").style.display = "none";debugger;
-            //alert("test1");
-        }
+b120514229
